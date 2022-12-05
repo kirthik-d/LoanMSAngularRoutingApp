@@ -1,0 +1,48 @@
+<div class="outer">
+    <div class="container">
+        <div class="row">
+            <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+                <div class="panel border bg-white">
+                    <div class="panel heading">
+                        <h3 class="pt-3 font-weight-bold text-center">Login</h3>
+                    </div>
+                    <div class="panel body p-3">
+                        <form #form="ngForm">
+                             
+                            <div class="form group pt-3">
+                                <div class="input field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="userName.valid"
+                                    [class.red-icon]="userName.invalid && userName.touched"></i>
+                                    <input name="UserName " #userName="ngModel"[(ngModel)]="objSrv.ppLogData.userName" placeholder="UserName Or Email" class="form-control" required>   
+                                </div>
+                            </div>
+                            <!-- <small *ngIf="loginForm.controls['UserName'].dirty &&loginForm.hasError('required','UserName')" class="text-danger">*Username is required</small> -->
+                           
+                            <div class="form group pt-3">
+                                <div class="input field">
+                                    <span class="fa fa-user p-2"></span>
+                                    <i class="fa fa-user-circle-o" aria-hidden="true" [class.green-icon]="password.valid"
+                                    [class.red-icon]="password.invalid && password.touched"></i>
+                                    <input name="password " #password="ngModel"[(ngModel)]="objSrv.ppLogData.password" placeholder="password" class="form-control" required>   
+                                </div>
+                            </div>
+                            <!-- <small *ngIf="loginForm.controls['password'].dirty && loginForm.hasError('required','password')" class="text-danger">*Password is required</small> -->
+                            <div class="form inline fr mt-4">
+                                <a id="Forgot" class="font-weight-bold">Forgot Password</a>
+                            </div>
+                            <button (click)="onSubmit()" type="submit" class="btn btn-primary btn-block mt-4 w-100">Login</button>
+                            <div class="text-center pt-4 text-muted">Don't have account?<a id="forgot" routerLink="/home/register">Register </a></div>
+                        </form>
+                    </div>
+                    <div class="mx-3 my-2 py-2 bordert">
+                        <!-- <div class="text-center py-3">
+                            <a href="https://www.facebook.com"target="_blank class="px-2><img src="https://www.dpreview.com/files/p/articles/4698742202/facebook.jpeg" alt=""></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
