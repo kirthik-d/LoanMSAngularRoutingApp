@@ -7,6 +7,8 @@ import { User } from './user.model';
   providedIn: 'root'
 })
 export class SignupService {
+  //https://loanstationapi.azurewebsites.net
+  
   readonly ppApiUrl="http://localhost:47198/api/Users/Register";
   readonly ppApiLogin = "http://localhost:47198/api/Users/Login";
   ppList: User[];

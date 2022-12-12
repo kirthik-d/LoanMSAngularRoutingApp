@@ -5,8 +5,8 @@ html, body {
     padding: 0;
     margin: 0;
     outline: none;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 13px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 18px;
     color: #666;
     line-height: 22px;
     }
@@ -25,9 +25,10 @@ html, body {
     h1 {
     position: absolute;
     margin: 0;
-    font-size: 36px;
+    font-size: 42px;
     color: #fff;
     z-index: 2;
+    font-family: 'Times New Roman', Times, serif;
     }
     .testbox {
     display: flex;
@@ -46,7 +47,7 @@ html, body {
     .banner {
     position: relative;
     height: 320px;
-    background-image: url("/assets/images/loan_application.jpg");  
+    background-image: url("https://thumbs.dreamstime.com/b/loan-application-form-financial-money-contract-agreement-company-credit-person-208769338.jpg");  
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -127,6 +128,9 @@ html, body {
     font-size: 16px;
     color: #fff;
     cursor: pointer;
+    }
+    i {
+        letter-spacing: 5px;
     }
     button:hover {
     background: #4286f4;

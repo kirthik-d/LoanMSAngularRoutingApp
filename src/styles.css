@@ -7,9 +7,14 @@ body {
 .green-icon {
     color:lightgreen;
 }
-
+.magenta-icon {
+    color:darkmagenta;
+}
 .blue-icon {
     color:darkblue;
+}
+.purple-icon {
+    color:purple;
 }
 .red-icon {
     color:red;

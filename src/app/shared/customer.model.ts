@@ -7,8 +7,10 @@ export class Customer {
     Gender;
     Occupation;
     IdentityType;
+    IdentityId;
     Address;
     City;
     State;
     ZipCode;
+    Status;
 }

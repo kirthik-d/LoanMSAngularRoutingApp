@@ -34,7 +34,7 @@ export class CustomerDisplayComponent implements OnInit {
       form.form.reset();
     }
     else {
-      this.objSrv.ppData={BorrowerId:0,FirstName:'',LastName:'',Contact:'',Dob:'',Gender:'',Occupation:'',IdentityType:'',Address:'',City:'',State:'',ZipCode:''};
+      this.objSrv.ppData={BorrowerId:0,FirstName:'',LastName:'',Contact:'',Dob:new Date("01/02/2000"),Gender:'',Occupation:'',IdentityType:'',IdentityId:'',Address:'',City:'',State:'',ZipCode:'',Status:''};
     }
   }
   onSubmit(form:NgForm)

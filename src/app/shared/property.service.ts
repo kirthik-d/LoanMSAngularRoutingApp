@@ -22,7 +22,7 @@ export class PropertyService {
    }
    putProperty()
    {
-    return this.objcHttp.put(this.ppApiUrl+"/"+this.ppData.ApplicationId, this.ppData);
+    return this.objcHttp.put(this.ppApiUrl+"/"+this.ppData.ApplicantId, this.ppData);
    }
    postProperty()
    {

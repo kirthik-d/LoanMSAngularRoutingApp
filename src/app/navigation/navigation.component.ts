@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerService } from '../shared/customer.service';
+import { Router } from '@angular/router';
+ 
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,23 +10,17 @@ import { CustomerService } from '../shared/customer.service';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(public objSrv:CustomerService) { }
+   title = 'Expense Manager';
+   isUserLoggedIn = false;
 
-  ngOnInit(): void {
-    this.objSrv.getCustomerList();
-  }
-  fillForm(selectedPP) {
-    this.objSrv.ppData = Object.assign({}, selectedPP);
-  }
-  del(pid)
-  {
-    if(confirm("Are you sure to delete this record?")) {
-      this.objSrv.deleteCustomer(pid).subscribe(res=>{ 
-        this.objSrv.getCustomerList();
-        alert('Record Deleted Successfully!!!');
-        },
-        err=>{alert('Error!!!'+err);}) 
-    }
-    
-  }
+   constructor(private authService: AuthService) {}
+
+   ngOnInit() {
+      let storeData = localStorage.getItem("token");
+      if( storeData != null)
+         this.isUserLoggedIn = true;
+      else
+         this.isUserLoggedIn = false;
+   }
+   
 }

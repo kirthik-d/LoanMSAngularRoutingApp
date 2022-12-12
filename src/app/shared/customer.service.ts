@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import 'rxjs/add/operator/map'
 import {HttpClient} from '@angular/common/http';
 import { Customer } from './customer.model';
 
@@ -10,7 +10,7 @@ export class CustomerService {
   readonly ppApiUrl="http://localhost:47198/api/BorrowerInformations";
   ppList: Customer[];
   ppData: Customer = new Customer();
-  pid:any;
+  id:any;
   constructor(public objcHttp:HttpClient) { 
 
    }
@@ -29,6 +29,11 @@ export class CustomerService {
    postCustomer()
    {
     return this.objcHttp.post(this.ppApiUrl, this.ppData);
+   }
+   searchCustomer(id) {
+    return this.objcHttp.get(this.ppApiUrl+"/"+id).map(res=>{
+      return JSON.stringify(res);
+    });
    }
    
    

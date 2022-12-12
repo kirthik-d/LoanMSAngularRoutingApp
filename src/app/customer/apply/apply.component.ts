@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+ 
 import { CustomerService } from 'src/app/shared/customer.service';
+import { LegalService } from 'src/app/shared/legal.service';
 import { PropertyService } from 'src/app/shared/property.service';
 
 @Component({
@@ -9,8 +11,11 @@ import { PropertyService } from 'src/app/shared/property.service';
   styleUrls: ['./apply.component.css']
 })
 export class ApplyComponent implements OnInit {
-
-  constructor(public cusServ:CustomerService, public propSrv:PropertyService) { }
+  data: Object;
+  a:number=0;
+  constructor(public cusServ:CustomerService, public propSrv:PropertyService, public objLegal:LegalService) { 
+  
+  }
 
   ngOnInit(): void {
     this.resetForm();
@@ -21,28 +26,41 @@ export class ApplyComponent implements OnInit {
       form.form.reset();
     }
     else {
-      this.cusServ.ppData={BorrowerId:0,FirstName:'',LastName:'',Contact:'',Dob:'',Gender:'',Occupation:'',IdentityType:'',Address:'',City:'',State:'',ZipCode:''};
-      this.propSrv.ppData={ApplicationId:0,LoanType:'',LoanPurpose:'',LoanTenure:'',RequestAmount:0};
+      
+      this.cusServ.ppData={BorrowerId:0,FirstName:'',LastName:'',Contact:'',Dob:new Date("2000-01-01"),Gender:'',Occupation:'',IdentityType:'',IdentityId:'', Address:'',City:'',State:'',ZipCode:'', Status:''}; 
+      this.propSrv.ppData={ApplicantId:0,LoanType:'',LoanPurpose:'',RequestAmount:0,LoanTenure:0, BorrowerId:0};
+      this.objLegal.ppData={ApplicationNo:0,PropertyProof:'',BankSalarySlip:'',AddressProof:'',GuarantorName:'',GuarantorProofType:'',GuarantorProofId:'', ApplicantId:0};
     }
   }
-  onSubmit(form:NgForm)
-  {
+  onSubmit(form1:NgForm)
+  { 
     this.cusServ.postCustomer().subscribe(
-        res=>{this.resetForm(form);
-        this.cusServ.getCustomerList();
-        alert("Record Insertion Success!!!");
+        res=>{this.resetForm(form1);
+        this.cusServ.getCustomerList();   
+        this.a++;
+        alert("Record is inserted and saved successfully!!! Your Borrower Id is: "+ this.a);
         },
         err=>{alert('Error!!!'+err);}
     )
   }
-  onSubmitProperty(form:NgForm) {
+  onSubmitProperty(form2:NgForm) {
     this.propSrv.postProperty().subscribe(
-      res=>{this.resetForm(form);
+      res=>{this.resetForm(form2);
       this.propSrv.getPropertyList();
-      alert("Record Insertion Success!!!");
+      alert("Record is inserted and saved successfully");
       },
       err=>{alert('Error!!!'+err);}
   )
+  }
+  onSubmitLegal(form3:NgForm) {
+    console.log(this.objLegal.ppData);
+    this.objLegal.postLegal().subscribe(
+      res=>{ this.resetForm(form3);
+      this.objLegal.getLegalList();
+      
+      alert("Your application is submitted! and your application Id is " + this.objLegal.ppData.ApplicantId);
+      },
+      err=>{alert('Error!!!'+err);})
   }
   insertRecord(form:NgForm)
   {

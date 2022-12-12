@@ -1,7 +1,8 @@
 export class Property {
-    ApplicationId;
+    ApplicantId;
     LoanType;
     LoanPurpose;
     RequestAmount;
     LoanTenure;
+    BorrowerId;
 }

@@ -6,10 +6,9 @@ import { Contact } from './model.model';
   providedIn: 'root'
 })
 export class ContactService {
-  readonly ppApiUrl="http://localhost:10328/api/Contacts";
+  readonly ppApiUrl="http://localhost:47198/api/Contacts";
   ppList: Contact[];
   ppData:Contact=new Contact();
-  pid:any;
   constructor(private objcHttp:HttpClient) { 
 
    }
@@ -21,6 +20,16 @@ export class ContactService {
    postContact()
    {
     return this.objcHttp.post(this.ppApiUrl, this.ppData);
+   }
+   putContact()
+   {
+    return this.objcHttp.put(this.ppApiUrl+"/"+this.ppData.Id, this.ppData);
+   }
+   deleteContact(id)
+   {
+    return this.objcHttp.delete(this.ppApiUrl+"/"+id);
    } 
+
+ 
 }
 

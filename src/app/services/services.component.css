@@ -45,7 +45,7 @@
     font-weight: 600;
     color: #040407dc;
     margin: 1em 0;
-    
+    font-family: 'Times New Roman', Times, serif;
     
   }
   a{
@@ -54,6 +54,14 @@
     font-weight: 600;
     color: #040407dc;
     margin: 1em 0;
+    color: purple; 
+    padding:20px;
+    font-family: 'Times New Roman', Times, serif;
+
+  }
+  i{
+    letter-spacing: 10px;
+    padding-top: 20px;
 
   }
   p {
@@ -62,6 +70,7 @@
     line-height: 1.6;
     letter-spacing: 0.03em;
     text-align: center;
+    font-family: 'Times New Roman', Times, serif;
   }
   .icon-wrapper {
     background-color: #7d2ae8;
